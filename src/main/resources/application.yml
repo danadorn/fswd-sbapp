@@ -1,0 +1,14 @@
+#spring.application.name=fswd-sbapp
+# properites
+#server.port = 8081
+
+# yml
+spring:
+  application:
+    name: fswd-sbapp
+  profiles:
+    active: dev
+server:
+  port: 8080
+  servlet:
+    context-path: /istad
