@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class StudentController {
-    @GetMapping("/api/students")
+public class StudentControllers {
+    @GetMapping("/api/student")
     public List<Student> getStudents() {
         Student student = Student.builder()
                 .name("Dana")
