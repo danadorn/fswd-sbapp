@@ -3,6 +3,8 @@ package co.istad.chhaya.fswd_sbapp.controller;
 import co.istad.chhaya.fswd_sbapp.dto.CreateProductRequest;
 import co.istad.chhaya.fswd_sbapp.dto.ProductResponse;
 import co.istad.chhaya.fswd_sbapp.dto.UpdateProductRequest;
+import co.istad.chhaya.fswd_sbapp.service.ProductService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
@@ -11,7 +13,10 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/v1/products")
 @Slf4j
+@RequiredArgsConstructor
 public class ProductController {
+
+    private final ProductService productService;
 
     @GetMapping
     public List<ProductResponse> getAllProducts(
@@ -24,6 +29,7 @@ public class ProductController {
 
     @PostMapping
     public void createNewProduct(@RequestBody CreateProductRequest createProductRequest){
+        productService.createProduct(createProductRequest);
         log.info("createProductRequest : {}",createProductRequest);
     }
 

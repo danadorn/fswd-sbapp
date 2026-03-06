@@ -6,6 +6,11 @@
 spring:
   application:
     name: fswd-sbapp
+  datasource:
+    url: jdbc:postgresql://localhost:5434/production_db
+    username: danadorn
+    password: 123
+    driver-class-name: org.postgresql.Driver
   profiles:
     active: dev
 server:
