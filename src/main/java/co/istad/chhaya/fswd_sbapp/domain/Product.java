@@ -1,25 +1,31 @@
 package co.istad.chhaya.fswd_sbapp.domain;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.UUID;
 
 @Entity
 @Table(name = "products")
 @AllArgsConstructor
 @NoArgsConstructor
-@Getter
-@Setter
+@Data
 public class Product {
 
     @Id
-    String productId;
-    String productName;
-    Double price;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String productId;
 
+    @Column(nullable = false)
+    private String productName;
+    private Double price;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @OneToMany(mappedBy = "product")
+    private List<OrderItem> orderItems;
 }
